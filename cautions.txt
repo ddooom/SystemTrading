@@ -1,0 +1,2 @@
+conda install -c conda-forge fbprophet
+pip install fbprophet 은 python 3.6부터 되고 안될 경우 https://daewonyoon.tistory.com/266 참고
