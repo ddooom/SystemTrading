@@ -1,28 +1,25 @@
-import json
+import yaml
 from datetime import datetime, timedelta
 import pandas as pd
 
 
-def get_json(config_path):
-    """ [json 파일 받기]
+def get_yaml(config_path):
+    """ [yaml 파일 받기]
     
-    /* */로 주석 처리된 json 파일 받기
+    yaml 파일 받기
     
     Args:
-        config_path (str) : json 파일 경로
+        config_path (str) : yaml 파일 경로
     
     Returns:
-        dict : dictionary 타입의 json 파일
+        dict : dictionary 타입의 yaml 파일
         
     """
     
-    with open(config_path, 'r', encoding='utf-8') as f:
-        contents = f.read()
-        while "/*" in contents:
-            preComment, postComment = contents.split('/*', 1)
-            contents = preComment + postComment.split('*/', 1)[1]
+    with open('config/config.yaml', encoding='utf-8') as f:
+        yaml_dict = yaml.load(f, Loader=yaml.FullLoader)
             
-        return json.loads(contents.replace("'", '"'))
+    return yaml_dict
 
 
 def set_config_restrictions(config):
